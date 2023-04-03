@@ -33,11 +33,11 @@ public class SecurityConfiguration {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		// @formatter:off
 		http
-				.authorizeHttpRequests((authorize) -> authorize
+				.authorizeHttpRequests(authorize -> authorize
 						.requestMatchers("/login", "/resources/**").permitAll()
 						.anyRequest().authenticated()
 				)
-				.jee((jee) -> jee.mappableRoles("USER", "ADMIN"));
+				.jee(jee -> jee.mappableRoles("USER", "ADMIN"));
 		// @formatter:on
 		return http.build();
 	}
