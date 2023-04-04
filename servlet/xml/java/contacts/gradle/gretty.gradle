@@ -15,11 +15,11 @@ Task prepareAppServerForIntegrationTests = project.tasks.create('prepareAppServe
 	}
 }
 
-project.tasks.matching { it.name == "appBeforeIntegrationTest" }.all { task ->
+project.tasks.matching { "appBeforeIntegrationTest".equals(it.name) }.all { task ->
 	task.dependsOn prepareAppServerForIntegrationTests
 }
 
-project.tasks.matching { it.name == "integrationTest" }.all {
+project.tasks.matching { "integrationTest".equals(it.name) }.all {
 	task -> task.doFirst {
 		def gretty = project.gretty
 		String host = project.gretty.host ?: 'localhost'

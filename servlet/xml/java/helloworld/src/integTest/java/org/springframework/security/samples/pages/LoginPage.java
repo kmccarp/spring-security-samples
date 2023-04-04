@@ -50,7 +50,7 @@ public class LoginPage {
 
 	public static class LoginForm {
 
-		private WebDriver webDriver;
+		private final WebDriver webDriver;
 
 		private WebElement username;
 

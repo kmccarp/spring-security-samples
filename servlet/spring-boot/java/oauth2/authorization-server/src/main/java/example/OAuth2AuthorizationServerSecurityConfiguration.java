@@ -74,7 +74,7 @@ public class OAuth2AuthorizationServerSecurityConfiguration {
 	public SecurityFilterChain standardSecurityFilterChain(HttpSecurity http) throws Exception {
 		// @formatter:off
 		http
-			.authorizeHttpRequests((authorize) -> authorize
+			.authorizeHttpRequests(authorize -> authorize
 				.anyRequest().authenticated()
 			)
 			.formLogin(Customizer.withDefaults());

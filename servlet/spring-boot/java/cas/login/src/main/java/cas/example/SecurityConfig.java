@@ -53,10 +53,10 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http, UserDetailsService userDetailsService) throws Exception {
-		http.authorizeHttpRequests((authorize) -> authorize.requestMatchers(HttpMethod.GET, "/loggedout").permitAll()
+		http.authorizeHttpRequests(authorize -> authorize.requestMatchers(HttpMethod.GET, "/loggedout").permitAll()
 				.anyRequest().authenticated())
-				.exceptionHandling((exceptions) -> exceptions.authenticationEntryPoint(casAuthenticationEntryPoint()))
-				.logout((logout) -> logout.logoutSuccessUrl("/loggedout"))
+				.exceptionHandling(exceptions -> exceptions.authenticationEntryPoint(casAuthenticationEntryPoint()))
+				.logout(logout -> logout.logoutSuccessUrl("/loggedout"))
 				.addFilter(casAuthenticationFilter(userDetailsService))
 				.addFilterBefore(new SingleSignOutFilter(), CasAuthenticationFilter.class);
 		return http.build();

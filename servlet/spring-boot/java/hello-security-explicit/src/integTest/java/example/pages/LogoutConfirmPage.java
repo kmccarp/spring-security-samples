@@ -43,7 +43,7 @@ public class LogoutConfirmPage {
 
 	public static class LogoutForm {
 
-		private WebDriver webDriver;
+		private final WebDriver webDriver;
 
 		@FindBy(css = "button[type=submit]")
 		private WebElement submit;
