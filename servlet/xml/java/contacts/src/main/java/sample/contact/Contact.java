@@ -25,6 +25,8 @@ import java.io.Serializable;
  */
 public class Contact implements Serializable {
 
+	private static final long serialVersionUID = 1;
+
 	private Long id;
 
 	private String email;
@@ -67,9 +69,9 @@ public class Contact implements Serializable {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.toString() + ": ");
-		sb.append("Id: " + this.getId() + "; ");
-		sb.append("Name: " + this.getName() + "; ");
-		sb.append("Email: " + this.getEmail());
+		sb.append("Id: ").append(this.getId()).append("; ");
+		sb.append("Name: ").append(this.getName()).append("; ");
+		sb.append("Email: ").append(this.getEmail());
 
 		return sb.toString();
 	}

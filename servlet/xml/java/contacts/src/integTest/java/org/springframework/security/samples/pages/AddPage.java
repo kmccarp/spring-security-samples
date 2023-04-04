@@ -46,7 +46,7 @@ public class AddPage {
 
 	public static class AddForm {
 
-		private WebDriver webDriver;
+		private final WebDriver webDriver;
 
 		private WebElement name;
 
