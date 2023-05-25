@@ -34,6 +34,8 @@ import org.springframework.util.Assert;
  */
 public class LocalHostWebClient extends WebClient {
 
+	private static final long serialVersionUID = 1;
+
 	private final Environment environment;
 
 	public LocalHostWebClient(Environment environment) {
