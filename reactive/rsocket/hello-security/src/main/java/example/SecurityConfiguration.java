@@ -37,10 +37,10 @@ public class SecurityConfiguration {
 	MapReactiveUserDetailsService userDetailsService() {
 		// @formatter:off
 		UserDetails user = User.withDefaultPasswordEncoder()
-				.username("user")
-				.password("password")
-				.roles("SETUP")
-				.build();
+	.username("user")
+	.password("password")
+	.roles("SETUP")
+	.build();
 		// @formatter:on
 		return new MapReactiveUserDetailsService(user);
 	}

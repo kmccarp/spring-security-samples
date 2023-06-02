@@ -47,11 +47,10 @@ public class SecurityConfiguration {
 	SecurityFilterChain app(HttpSecurity http) throws Exception {
 		// @formatter:off
 		http
-				.authorizeHttpRequests((authorize) -> authorize
-						.anyRequest().authenticated()
-				)
-				.saml2Login(Customizer.withDefaults())
-				.saml2Logout(Customizer.withDefaults());
+	.authorizeHttpRequests((authorize) -> authorize.anyRequest().authenticated()
+	)
+	.saml2Login(Customizer.withDefaults())
+	.saml2Logout(Customizer.withDefaults());
 		// @formatter:on
 
 		return http.build();
@@ -60,16 +59,16 @@ public class SecurityConfiguration {
 	@Bean
 	RelyingPartyRegistrationRepository relyingPartyRegistrationRepository() {
 		RelyingPartyRegistration relyingPartyRegistration = RelyingPartyRegistrations
-				.fromMetadataLocation("https://dev-05937739.okta.com/app/exk46xofd8NZvFCpS5d7/sso/saml/metadata")
-				.registrationId("one")
-				.decryptionX509Credentials(
-						(c) -> c.add(Saml2X509Credential.decryption(this.privateKey, relyingPartyCertificate())))
-				.signingX509Credentials(
-						(c) -> c.add(Saml2X509Credential.signing(this.privateKey, relyingPartyCertificate())))
-				.singleLogoutServiceLocation(
-						"https://dev-05937739.okta.com/app/dev-05937739_springgsecuritysaml2idp_1/exk46xofd8NZvFCpS5d7/slo/saml")
-				.singleLogoutServiceResponseLocation("http://localhost:8080/logout/saml2/slo")
-				.singleLogoutServiceBinding(Saml2MessageBinding.POST).build();
+	.fromMetadataLocation("https://dev-05937739.okta.com/app/exk46xofd8NZvFCpS5d7/sso/saml/metadata")
+	.registrationId("one")
+	.decryptionX509Credentials(
+(c) -> c.add(Saml2X509Credential.decryption(this.privateKey, relyingPartyCertificate())))
+	.signingX509Credentials(
+(c) -> c.add(Saml2X509Credential.signing(this.privateKey, relyingPartyCertificate())))
+	.singleLogoutServiceLocation(
+"https://dev-05937739.okta.com/app/dev-05937739_springgsecuritysaml2idp_1/exk46xofd8NZvFCpS5d7/slo/saml")
+	.singleLogoutServiceResponseLocation("http://localhost:8080/logout/saml2/slo")
+	.singleLogoutServiceBinding(Saml2MessageBinding.POST).build();
 
 		return new InMemoryRelyingPartyRegistrationRepository(relyingPartyRegistration);
 	}

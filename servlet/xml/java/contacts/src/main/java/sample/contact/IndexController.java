@@ -42,10 +42,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class IndexController {
 
-	private static final Permission[] HAS_DELETE = new Permission[] { BasePermission.DELETE,
-			BasePermission.ADMINISTRATION };
+	private static final Permission[] HAS_DELETE = new Permission[]{BasePermission.DELETE,
+BasePermission.ADMINISTRATION};
 
-	private static final Permission[] HAS_ADMIN = new Permission[] { BasePermission.ADMINISTRATION };
+	private static final Permission[] HAS_ADMIN = new Permission[]{BasePermission.ADMINISTRATION};
 
 	@Autowired
 	private ContactManager contactManager;

@@ -132,7 +132,7 @@ public final class AdminPermissionController implements MessageSourceAware {
 
 	@RequestMapping("/secure/deletePermission.htm")
 	public ModelAndView deletePermission(@RequestParam("contactId") long contactId, @RequestParam("sid") String sid,
-			@RequestParam("permission") int mask) {
+@RequestParam("permission") int mask) {
 
 		Contact contact = this.contactManager.getById(contactId);
 

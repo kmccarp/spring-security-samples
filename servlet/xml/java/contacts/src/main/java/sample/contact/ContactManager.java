@@ -50,7 +50,7 @@ public interface ContactManager {
 	List<String> getAllRecipients();
 
 	@PreAuthorize("hasPermission(#id, 'sample.contact.Contact', read) or "
-			+ "hasPermission(#id, 'sample.contact.Contact', admin)")
++ "hasPermission(#id, 'sample.contact.Contact', admin)")
 	Contact getById(Long id);
 
 	Contact getRandomContact();

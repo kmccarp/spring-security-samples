@@ -28,8 +28,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Ben Alex
  *
  */
-@ContextConfiguration(
-		locations = { "classpath:applicationContext-dms-shared.xml", "classpath:applicationContext-dms-secure.xml" })
+@ContextConfiguration(locations = {"classpath:applicationContext-dms-shared.xml", "classpath:applicationContext-dms-secure.xml"})
 public class SecureDmsIntegrationTests extends DmsIntegrationTests {
 
 	@Override
@@ -38,15 +37,15 @@ public class SecureDmsIntegrationTests extends DmsIntegrationTests {
 		assertThat(this.jdbcTemplate.queryForObject("select count(id) from DIRECTORY", Integer.class)).isEqualTo(9);
 		assertThat(this.jdbcTemplate.queryForObject("select count(id) from FILE", Integer.class)).isEqualTo(90);
 		assertThat(this.jdbcTemplate.queryForObject("select count(id) from ACL_SID", Integer.class)).isEqualTo(4); // 3
-																													// users
-																													// +
-																													// 1
-																													// role
+		// users
+		// +
+		// 1
+		// role
 		assertThat(this.jdbcTemplate.queryForObject("select count(id) from ACL_CLASS", Integer.class)).isEqualTo(2); // Directory
 		// and
 		// File
 		assertThat(this.jdbcTemplate.queryForObject("select count(id) from ACL_OBJECT_IDENTITY", Integer.class))
-				.isEqualTo(100);
+	.isEqualTo(100);
 		assertThat(this.jdbcTemplate.queryForObject("select count(id) from ACL_ENTRY", Integer.class)).isEqualTo(115);
 	}
 

@@ -43,12 +43,11 @@ public class SecurityConfiguration {
 	SecurityWebFilterChain springWebFilterChain(ServerHttpSecurity http) {
 		// @formatter:off
 		http
-			// Demonstrate that method security works
-			// Best practice to use both for defense in depth
-			.authorizeExchange((authorize) -> authorize
-				.anyExchange().permitAll()
-			)
-			.httpBasic(withDefaults());
+	// Demonstrate that method security works
+	// Best practice to use both for defense in depth
+	.authorizeExchange((authorize) -> authorize.anyExchange().permitAll()
+	)
+	.httpBasic(withDefaults());
 		// @formatter:on
 		return http.build();
 	}
@@ -57,15 +56,15 @@ public class SecurityConfiguration {
 	MapReactiveUserDetailsService userDetailsService() {
 		// @formatter:off
 		UserDetails user = User.withDefaultPasswordEncoder()
-			.username("user")
-			.password("password")
-			.roles("USER")
-			.build();
+	.username("user")
+	.password("password")
+	.roles("USER")
+	.build();
 		UserDetails admin = User.withDefaultPasswordEncoder()
-			.username("admin")
-			.password("password")
-			.roles("ADMIN", "USER")
-			.build();
+	.username("admin")
+	.password("password")
+	.roles("ADMIN", "USER")
+	.build();
 		// @formatter:on
 		return new MapReactiveUserDetailsService(user, admin);
 	}

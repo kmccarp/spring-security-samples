@@ -43,7 +43,7 @@ public class AddPermissionValidator implements Validator {
 			int permission = addPermission.getPermission();
 
 			if ((permission != BasePermission.ADMINISTRATION.getMask()) && (permission != BasePermission.READ.getMask())
-					&& (permission != BasePermission.DELETE.getMask())) {
+		&& (permission != BasePermission.DELETE.getMask())) {
 				errors.rejectValue("permission", "err.permission.invalid", "The indicated permission is invalid. *");
 			}
 		}
@@ -51,7 +51,7 @@ public class AddPermissionValidator implements Validator {
 		if (addPermission.getRecipient() != null) {
 			if (addPermission.getRecipient().length() > 100) {
 				errors.rejectValue("recipient", "err.recipient.length",
-						"The recipient is too long (maximum 100 characters). *");
+			"The recipient is too long (maximum 100 characters). *");
 			}
 		}
 	}

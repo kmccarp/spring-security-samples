@@ -57,7 +57,7 @@ public class ClientApplication {
 			try {
 				System.out.println("Trying to find setUsername(String) method on: " + object.getClass().getName());
 
-				Method method = object.getClass().getMethod("setUsername", new Class[] { String.class });
+				Method method = object.getClass().getMethod("setUsername", new Class[]{String.class});
 				System.out.println("Found; Trying to setUsername(String) to " + authentication.getPrincipal());
 				method.invoke(object, authentication.getPrincipal());
 			}
@@ -71,7 +71,7 @@ public class ClientApplication {
 			try {
 				System.out.println("Trying to find setPassword(String) method on: " + object.getClass().getName());
 
-				Method method = object.getClass().getMethod("setPassword", new Class[] { String.class });
+				Method method = object.getClass().getMethod("setPassword", new Class[]{String.class});
 				method.invoke(object, authentication.getCredentials());
 				System.out.println("Found; Trying to setPassword(String) to " + authentication.getCredentials());
 			}
@@ -116,10 +116,10 @@ public class ClientApplication {
 
 		if ("".equals(username) || "".equals(password)) {
 			System.out.println(
-					"You need to specify the user ID to use, the password to use, and optionally a number of calls "
-							+ "using the username, password, and nrOfCalls system properties respectively. eg for user rod, "
-							+ "use: -Dusername=rod -Dpassword=koala' for a single call per service and "
-							+ "use: -Dusername=rod -Dpassword=koala -DnrOfCalls=10 for ten calls per service.");
+		"You need to specify the user ID to use, the password to use, and optionally a number of calls "
+	+ "using the username, password, and nrOfCalls system properties respectively. eg for user rod, "
+	+ "use: -Dusername=rod -Dpassword=koala' for a single call per service and "
+	+ "use: -Dusername=rod -Dpassword=koala -DnrOfCalls=10 for ten calls per service.");
 			System.exit(-1);
 		}
 		else {

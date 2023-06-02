@@ -38,9 +38,9 @@ public class HelloSecurityTests {
 	void indexWhenUnAuthenticatedThenRedirect() throws Exception {
 		// @formatter:off
 		this.rest.get()
-			.uri("/")
-			.exchange()
-			.expectStatus().is3xxRedirection();
+	.uri("/")
+	.exchange()
+	.expectStatus().is3xxRedirection();
 		// @formatter:on
 	}
 
@@ -49,9 +49,9 @@ public class HelloSecurityTests {
 	void indexWhenAuthenticatedThenOk() throws Exception {
 		// @formatter:off
 		this.rest.get()
-			.uri("/")
-			.exchange()
-			.expectStatus().isOk();
+	.uri("/")
+	.exchange()
+	.expectStatus().isOk();
 		// @formatter:on
 	}
 

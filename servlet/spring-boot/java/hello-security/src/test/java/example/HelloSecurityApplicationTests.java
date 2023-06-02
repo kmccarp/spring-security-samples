@@ -40,7 +40,7 @@ public class HelloSecurityApplicationTests {
 	void indexWhenUnAuthenticatedThenRedirect() throws Exception {
 		// @formatter:off
 		this.mockMvc.perform(get("/"))
-				.andExpect(status().isUnauthorized());
+	.andExpect(status().isUnauthorized());
 		// @formatter:on
 	}
 
@@ -49,7 +49,7 @@ public class HelloSecurityApplicationTests {
 	void indexWhenAuthenticatedThenOk() throws Exception {
 		// @formatter:off
 		this.mockMvc.perform(get("/"))
-				.andExpect(status().isOk());
+	.andExpect(status().isOk());
 		// @formatter:on
 	}
 

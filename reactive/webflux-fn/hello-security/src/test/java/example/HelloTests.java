@@ -39,10 +39,10 @@ public class HelloTests {
 	void indexWhenAuthenticatedThenOk() throws Exception {
 		// @formatter:off
 		this.rest.get()
-			.uri("/")
-			.exchange()
-			.expectStatus().isOk()
-			.expectBody().json("{\"message\":\"Hello user!\"}");
+	.uri("/")
+	.exchange()
+	.expectStatus().isOk()
+	.expectBody().json("{\"message\":\"Hello user!\"}");
 		// @formatter:on
 	}
 
@@ -50,9 +50,9 @@ public class HelloTests {
 	void indexWithNotAuthenticatedThenUnauthorized() throws Exception {
 		// @formatter:off
 		this.rest.get()
-			.uri("/")
-			.exchange()
-			.expectStatus().isUnauthorized();
+	.uri("/")
+	.exchange()
+	.expectStatus().isUnauthorized();
 		// @formatter:on
 	}
 

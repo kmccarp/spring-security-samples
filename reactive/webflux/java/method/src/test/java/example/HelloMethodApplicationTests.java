@@ -40,9 +40,9 @@ public class HelloMethodApplicationTests {
 	void messageWhenNotAuthenticatedThenUnAuthorized() {
 		// @formatter:off
 		this.rest.get()
-				.uri("/message")
-				.exchange().
-				expectStatus().isUnauthorized();
+	.uri("/message")
+	.exchange().
+	expectStatus().isUnauthorized();
 		// @formatter:on
 	}
 
@@ -51,9 +51,9 @@ public class HelloMethodApplicationTests {
 	void messageWhenAuthenticatedThenOk() {
 		// @formatter:off
 		this.rest.get()
-				.uri("/message")
-				.exchange()
-				.expectStatus().isOk();
+	.uri("/message")
+	.exchange()
+	.expectStatus().isOk();
 		// @formatter:on
 	}
 
@@ -63,9 +63,9 @@ public class HelloMethodApplicationTests {
 	void secretWhenNotAuthenticatedThenUnAuthorized() {
 		// @formatter:off
 		this.rest.get()
-				.uri("/secret")
-				.exchange()
-				.expectStatus().isUnauthorized();
+	.uri("/secret")
+	.exchange()
+	.expectStatus().isUnauthorized();
 		// @formatter:on
 	}
 
@@ -74,9 +74,9 @@ public class HelloMethodApplicationTests {
 	void secretWhenNotAuthorizedThenForbidden() {
 		// @formatter:off
 		this.rest.get()
-				.uri("/secret")
-				.exchange()
-				.expectStatus().isForbidden();
+	.uri("/secret")
+	.exchange()
+	.expectStatus().isForbidden();
 		// @formatter:on
 	}
 
@@ -85,9 +85,9 @@ public class HelloMethodApplicationTests {
 	void secretWhenAuthorizedThenOk() {
 		// @formatter:off
 		this.rest.get()
-				.uri("/secret")
-				.exchange()
-				.expectStatus().isOk();
+	.uri("/secret")
+	.exchange()
+	.expectStatus().isOk();
 		// @formatter:on
 	}
 

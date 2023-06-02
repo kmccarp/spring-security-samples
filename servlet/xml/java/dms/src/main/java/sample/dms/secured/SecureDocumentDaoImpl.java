@@ -47,7 +47,7 @@ public class SecureDocumentDaoImpl extends DocumentDaoImpl implements SecureDocu
 
 	public String[] getUsers() {
 		return getJdbcTemplate().query(SELECT_FROM_USERS, (rs, rowNumber) -> rs.getString("USERNAME"))
-				.toArray(new String[] {});
+	.toArray(new String[]{});
 	}
 
 	public void create(AbstractElement element) {
@@ -65,7 +65,7 @@ public class SecureDocumentDaoImpl extends DocumentDaoImpl implements SecureDocu
 			acl.setParent(aclParent);
 		}
 		acl.insertAce(acl.getEntries().size(), BasePermission.ADMINISTRATION,
-				new PrincipalSid(SecurityContextHolder.getContext().getAuthentication()), true);
+	new PrincipalSid(SecurityContextHolder.getContext().getAuthentication()), true);
 
 		this.mutableAclService.updateAcl(acl);
 	}

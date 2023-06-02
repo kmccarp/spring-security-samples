@@ -44,24 +44,24 @@ public class RememberMeTests {
 	void loginWhenRemembermeThenAuthenticated(WebApplicationContext context) throws Exception {
 		// @formatter:off
 		MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(context)
-				.apply(springSecurity())
-				.build();
+	.apply(springSecurity())
+	.build();
 
 		MockHttpServletRequestBuilder login = post("/login")
-				.with(csrf())
-				.param("username", "user")
-				.param("password", "password")
-				.param("remember-me", "true");
+	.with(csrf())
+	.param("username", "user")
+	.param("password", "password")
+	.param("remember-me", "true");
 		MvcResult mvcResult = mockMvc.perform(login)
-				.andExpect(authenticated())
-				.andReturn();
+	.andExpect(authenticated())
+	.andReturn();
 		// @formatter:on
 
 		Cookie rememberMe = mvcResult.getResponse().getCookie("remember-me");
 
 		// @formatter:off
 		mockMvc.perform(get("/").cookie(rememberMe))
-				.andExpect(authenticated());
+	.andExpect(authenticated());
 		// @formatter:on
 	}
 
@@ -69,19 +69,19 @@ public class RememberMeTests {
 	void loginWhenNoRemembermeThenUnauthenticated(WebApplicationContext context) throws Exception {
 		// @formatter:off
 		MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(context)
-				.apply(springSecurity())
-				.build();
+	.apply(springSecurity())
+	.build();
 
 		MockHttpServletRequestBuilder login = post("/login")
-				.with(csrf())
-				.param("username", "user")
-				.param("password", "password")
-				.param("remember-me", "true");
+	.with(csrf())
+	.param("username", "user")
+	.param("password", "password")
+	.param("remember-me", "true");
 		// @formatter:on
 
 		// @formatter:off
 		mockMvc.perform(get("/"))
-				.andExpect(unauthenticated());
+	.andExpect(unauthenticated());
 		// @formatter:on
 	}
 
@@ -89,16 +89,16 @@ public class RememberMeTests {
 	void loginWhenNoRemembermeThenNoCookie(WebApplicationContext context) throws Exception {
 		// @formatter:off
 		MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(context)
-				.apply(springSecurity())
-				.build();
+	.apply(springSecurity())
+	.build();
 
 		MockHttpServletRequestBuilder login = post("/login")
-				.with(csrf())
-				.param("username", "user")
-				.param("password", "password");
+	.with(csrf())
+	.param("username", "user")
+	.param("password", "password");
 		MvcResult mvcResult = mockMvc.perform(login)
-				.andExpect(authenticated())
-				.andReturn();
+	.andExpect(authenticated())
+	.andReturn();
 		// @formatter:on
 
 		Cookie rememberMe = mvcResult.getResponse().getCookie("remember-me");

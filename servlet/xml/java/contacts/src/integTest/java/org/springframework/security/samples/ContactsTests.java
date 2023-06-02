@@ -60,20 +60,20 @@ public class ContactsTests {
 
 		// @formatter:off
 		ContactsPage.accessManagePageWithUnauthenticatedUser(this.driver, this.port)
-			.sendsToLoginPage()
-				.username("rod")
-				.password("koala")
-			.submit()
-			.isAtContactsPage()
-			.addContact()
-				.name(name)
-				.email(email)
-			.submit()
-			.andHasContact(name, email)
-			.delete()
-			.andConfirmDeletion()
-			.isAtContactsPage()
-			.andContactHasBeenRemoved(name, email);
+	.sendsToLoginPage()
+	.username("rod")
+	.password("koala")
+	.submit()
+	.isAtContactsPage()
+	.addContact()
+	.name(name)
+	.email(email)
+	.submit()
+	.andHasContact(name, email)
+	.delete()
+	.andConfirmDeletion()
+	.isAtContactsPage()
+	.andContactHasBeenRemoved(name, email);
 		// @formatter:on
 	}
 
@@ -81,12 +81,12 @@ public class ContactsTests {
 	void authenticatedUserLogsOut() {
 		// @formatter:off
 		final HomePage homePage = ContactsPage.accessManagePageWithUnauthenticatedUser(this.driver, this.port)
-			.sendsToLoginPage()
-				.username("rod")
-				.password("koala")
-			.submit()
-			.isAtContactsPage()
-			.logout();
+	.sendsToLoginPage()
+	.username("rod")
+	.password("koala")
+	.submit()
+	.isAtContactsPage()
+	.logout();
 		// @formatter:on
 		homePage.assertAt();
 

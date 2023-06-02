@@ -33,7 +33,7 @@ public class WithMockCustomUserSecurityContextFactory implements WithSecurityCon
 		principal.setId(customUser.id());
 		principal.setEmail(customUser.email());
 		Authentication auth = new UsernamePasswordAuthenticationToken(principal, "password",
-				AuthorityUtils.createAuthorityList("ROLE_USER"));
+	AuthorityUtils.createAuthorityList("ROLE_USER"));
 		context.setAuthentication(auth);
 		return context;
 	}

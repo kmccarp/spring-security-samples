@@ -52,7 +52,7 @@ public class ContactDaoSpring extends JdbcDaoSupport implements ContactDao {
 
 	public List<Contact> findAll() {
 		return getJdbcTemplate().query("select id, contact_name, email from contacts order by id",
-				(rs, rowNum) -> mapContact(rs));
+	(rs, rowNum) -> mapContact(rs));
 	}
 
 	public List<String> findAllPrincipals() {
@@ -61,13 +61,13 @@ public class ContactDaoSpring extends JdbcDaoSupport implements ContactDao {
 
 	public List<String> findAllRoles() {
 		return getJdbcTemplate().queryForList("select distinct authority from authorities order by authority",
-				String.class);
+	String.class);
 	}
 
 	public Contact getById(Long id) {
 		List<Contact> list = getJdbcTemplate().query(
-				"select id, contact_name, email from contacts where id = ? order by id", (rs, rowNum) -> mapContact(rs),
-				id);
+	"select id, contact_name, email from contacts where id = ? order by id", (rs, rowNum) -> mapContact(rs),
+	id);
 
 		if (list.size() == 0) {
 			return null;

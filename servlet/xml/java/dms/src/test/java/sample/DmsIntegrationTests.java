@@ -55,8 +55,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Ben Alex
  *
  */
-@ContextConfiguration(
-		locations = { "classpath:applicationContext-dms-shared.xml", "classpath:applicationContext-dms-insecure.xml" })
+@ContextConfiguration(locations = {"classpath:applicationContext-dms-shared.xml", "classpath:applicationContext-dms-insecure.xml"})
 @ExtendWith(SpringExtension.class)
 @Transactional
 public class DmsIntegrationTests {
@@ -100,7 +99,7 @@ public class DmsIntegrationTests {
 
 	protected void process(String username, String password, boolean shouldBeFiltered) {
 		SecurityContextHolder.getContext()
-				.setAuthentication(new UsernamePasswordAuthenticationToken(username, password));
+	.setAuthentication(new UsernamePasswordAuthenticationToken(username, password));
 		System.out.println("------ Test for username: " + username + " ------");
 		AbstractElement[] rootElements = this.documentDao.findElements(Directory.ROOT_DIRECTORY);
 		assertThat(rootElements).hasSize(3);
@@ -119,7 +118,7 @@ public class DmsIntegrationTests {
 
 		AbstractElement[] homeElements = this.documentDao.findElements(homeDir);
 		assertThat(homeElements).hasSize(12); // confidential and shared
-												// directories,
+		// directories,
 		// plus 10 files
 
 		AbstractElement[] nonHomeElements = this.documentDao.findElements(nonHomeDir);
@@ -140,7 +139,7 @@ public class DmsIntegrationTests {
 
 		if (shouldBeFiltered) {
 			assertThat(nonHomeConfidentialDir).withFailMessage("Found confidential directory when we should not have")
-					.isNull();
+		.isNull();
 		}
 		else {
 			System.out.println("Inaccessible dir....: " + nonHomeConfidentialDir.getFullName());

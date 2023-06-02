@@ -30,17 +30,17 @@ public class MvcWebApplicationInitializer extends AbstractAnnotationConfigDispat
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class[] { ApplicationConfiguration.class };
+		return new Class[]{ApplicationConfiguration.class};
 	}
 
 	@Override
 	protected String[] getServletMappings() {
-		return new String[] { "/" };
+		return new String[]{"/"};
 	}
 
 	@Override
 	protected Filter[] getServletFilters() {
-		return new Filter[] { new HiddenHttpMethodFilter() };
+		return new Filter[]{new HiddenHttpMethodFilter()};
 	}
 
 }

@@ -37,8 +37,8 @@ public class HelloController {
 	// @formatter:off
 	public Mono<ServerResponse> hello(ServerRequest serverRequest) {
 		return ServerResponse.ok()
-			.contentType(MediaType.APPLICATION_JSON)
-			.bodyValue(Collections.singletonMap("message", "Hello world!"));
+	.contentType(MediaType.APPLICATION_JSON)
+	.bodyValue(Collections.singletonMap("message", "Hello world!"));
 	}
 	// @formatter:on
 

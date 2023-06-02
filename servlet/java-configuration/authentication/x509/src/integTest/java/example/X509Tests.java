@@ -55,7 +55,7 @@ public class X509Tests {
 	void notCertificateThenSslHandshakeException() {
 		RestTemplate rest = new RestTemplate();
 		assertThatCode(() -> rest.getForEntity(getServerUrl(), String.class))
-				.hasCauseInstanceOf(SSLHandshakeException.class);
+	.hasCauseInstanceOf(SSLHandshakeException.class);
 	}
 
 	@Test
@@ -66,18 +66,18 @@ public class X509Tests {
 		keyStore.load(serverKeystore.getInputStream(), "password".toCharArray());
 		// @formatter:off
 		SSLContext sslContext = SSLContexts.custom()
-				.loadKeyMaterial(keyStore, "password".toCharArray(), (aliases, socket) -> "client")
-				.loadTrustMaterial(keyStore, new TrustAllStrategy())
-				.build();
+	.loadKeyMaterial(keyStore, "password".toCharArray(), (aliases, socket) -> "client")
+	.loadTrustMaterial(keyStore, new TrustAllStrategy())
+	.build();
 
 		SSLConnectionSocketFactory socketFactory = new SSLConnectionSocketFactory(sslContext,
-				HttpsSupport.getDefaultHostnameVerifier());
+	HttpsSupport.getDefaultHostnameVerifier());
 
 		final Registry<ConnectionSocketFactory> socketFactoryRegistry =
-				RegistryBuilder.<ConnectionSocketFactory>create()
-						.register("https", socketFactory)
-						.register("http", new PlainConnectionSocketFactory())
-						.build();
+	RegistryBuilder.<ConnectionSocketFactory>create()
+.register("https", socketFactory)
+.register("http", new PlainConnectionSocketFactory())
+.build();
 
 		final BasicHttpClientConnectionManager connectionManager = new BasicHttpClientConnectionManager(socketFactoryRegistry);
 		// @formatter:on

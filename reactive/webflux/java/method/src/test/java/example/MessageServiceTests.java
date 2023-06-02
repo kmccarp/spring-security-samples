@@ -40,8 +40,8 @@ public class MessageServiceTests {
 	void findMessageWhenNotAuthenticatedThenDenied() {
 		// @formatter:off
 		StepVerifier.create(this.messages.findMessage())
-				.expectError(AccessDeniedException.class)
-				.verify();
+	.expectError(AccessDeniedException.class)
+	.verify();
 		// @formatter:on
 	}
 
@@ -50,8 +50,8 @@ public class MessageServiceTests {
 	void findMessageWhenUserThenDenied() {
 		// @formatter:off
 		StepVerifier.create(this.messages.findMessage())
-				.expectNext("Hello User!")
-				.verifyComplete();
+	.expectNext("Hello User!")
+	.verifyComplete();
 		// @formatter:on
 	}
 
@@ -61,8 +61,8 @@ public class MessageServiceTests {
 	void findSecretMessageWhenNotAuthenticatedThenDenied() {
 		// @formatter:off
 		StepVerifier.create(this.messages.findSecretMessage())
-				.expectError(AccessDeniedException.class)
-				.verify();
+	.expectError(AccessDeniedException.class)
+	.verify();
 		// @formatter:on
 	}
 
@@ -71,8 +71,8 @@ public class MessageServiceTests {
 	void findSecretMessageWhenNotAuthorizedThenDenied() {
 		// @formatter:off
 		StepVerifier.create(this.messages.findSecretMessage())
-				.expectError(AccessDeniedException.class)
-				.verify();
+	.expectError(AccessDeniedException.class)
+	.verify();
 		// @formatter:on
 	}
 
@@ -81,8 +81,8 @@ public class MessageServiceTests {
 	void findSecretMessageWhenAuthorizedThenSuccess() {
 		// @formatter:off
 		StepVerifier.create(this.messages.findSecretMessage())
-				.expectNext("Hello Admin!")
-				.verifyComplete();
+	.expectNext("Hello Admin!")
+	.verifyComplete();
 		// @formatter:on
 	}
 

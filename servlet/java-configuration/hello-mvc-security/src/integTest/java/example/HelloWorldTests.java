@@ -55,10 +55,10 @@ public class HelloWorldTests {
 	void authenticatedUserIsSentToOriginalPage() {
 		// @formatter:off
 		final HomePage homePage = HomePage.to(this.driver, this.port)
-				.loginForm()
-					.username("user")
-					.password("password")
-					.submit();
+	.loginForm()
+	.username("user")
+	.password("password")
+	.submit();
 		// @formatter:on
 		homePage.assertAt();
 	}
@@ -67,11 +67,11 @@ public class HelloWorldTests {
 	void authenticatedUserLogsOut() {
 		// @formatter:off
 		LoginPage loginPage = HomePage.to(this.driver, this.port)
-				.loginForm()
-					.username("user")
-					.password("password")
-					.submit()
-				.logout();
+	.loginForm()
+	.username("user")
+	.password("password")
+	.submit()
+	.logout();
 		// @formatter:on
 		loginPage.assertAt();
 

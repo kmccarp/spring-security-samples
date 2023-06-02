@@ -42,9 +42,9 @@ public class HelloMethodApplicationITests {
 	void messageWhenNotAuthenticated() {
 		// @formatter:off
 		this.rest.get()
-				.uri("/message")
-				.exchange()
-				.expectStatus().isUnauthorized();
+	.uri("/message")
+	.exchange()
+	.expectStatus().isUnauthorized();
 		// @formatter:on
 	}
 
@@ -52,10 +52,10 @@ public class HelloMethodApplicationITests {
 	void messageWhenUserThenOk() {
 		// @formatter:off
 		this.rest.get()
-			.uri("/message")
-			.headers(userCredentials())
-			.exchange()
-			.expectStatus().isOk();
+	.uri("/message")
+	.headers(userCredentials())
+	.exchange()
+	.expectStatus().isOk();
 		// @formatter:on
 	}
 
@@ -65,9 +65,9 @@ public class HelloMethodApplicationITests {
 	void secretWhenNotAuthenticated() {
 		// @formatter:off
 		this.rest.get()
-			.uri("/secret")
-			.exchange()
-			.expectStatus().isUnauthorized();
+	.uri("/secret")
+	.exchange()
+	.expectStatus().isUnauthorized();
 		// @formatter:on
 	}
 
@@ -75,10 +75,10 @@ public class HelloMethodApplicationITests {
 	void secretWhenUserThenForbidden() {
 		// @formatter:off
 		this.rest.get()
-			.uri("/secret")
-			.headers(userCredentials())
-			.exchange()
-			.expectStatus().isForbidden();
+	.uri("/secret")
+	.headers(userCredentials())
+	.exchange()
+	.expectStatus().isForbidden();
 		// @formatter:on
 	}
 
@@ -86,11 +86,11 @@ public class HelloMethodApplicationITests {
 	void secretWhenAdminThenOk() {
 		// @formatter:off
 		this.rest.get()
-			.uri("/secret")
-			.headers(adminCredentials())
-			.exchange()
-			.expectStatus().isOk()
-			.expectBody(String.class).isEqualTo("Hello Admin!");
+	.uri("/secret")
+	.headers(adminCredentials())
+	.exchange()
+	.expectStatus().isOk()
+	.expectBody(String.class).isEqualTo("Hello Admin!");
 		// @formatter:on
 	}
 

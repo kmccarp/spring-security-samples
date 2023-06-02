@@ -40,7 +40,7 @@ public class SecureDataSourcePopulator extends DataSourcePopulator {
 	private final MutableAclService aclService;
 
 	public SecureDataSourcePopulator(DataSource dataSource, SecureDocumentDao documentDao,
-			MutableAclService aclService) {
+MutableAclService aclService) {
 		super(dataSource, documentDao);
 		Assert.notNull(aclService, "MutableAclService required");
 		this.aclService = aclService;
@@ -52,7 +52,7 @@ public class SecureDataSourcePopulator extends DataSourcePopulator {
 		Assert.notNull(element, "Element required");
 		Assert.hasText(recipient, "Recipient required");
 		Assert.notNull(SecurityContextHolder.getContext().getAuthentication(),
-				"SecurityContextHolder must contain an Authentication");
+	"SecurityContextHolder must contain an Authentication");
 
 		// We need SecureDocumentDao to assign different permissions
 		// SecureDocumentDao dao = (SecureDocumentDao) documentDao;

@@ -37,9 +37,9 @@ public class HelloTests {
 	void indexThenOk() throws Exception {
 		// @formatter:off
 		this.rest.get()
-			.uri("/")
-			.exchange()
-			.expectStatus().isOk();
+	.uri("/")
+	.exchange()
+	.expectStatus().isOk();
 		// @formatter:on
 	}
 

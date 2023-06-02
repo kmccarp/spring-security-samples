@@ -45,8 +45,8 @@ public class HelloControllerTests {
 	void rootWhenAuthenticatedThenSaysHelloUser() throws Exception {
 		// @formatter:off
 		this.mvc.perform(get("/")
-			.with(httpBasic("user", "password")))
-			.andExpect(content().string("Hello, user!"));
+	.with(httpBasic("user", "password")))
+	.andExpect(content().string("Hello, user!"));
 		// @formatter:on
 	}
 
@@ -54,7 +54,7 @@ public class HelloControllerTests {
 	void rootWhenUnauthenticatedThen401() throws Exception {
 		// @formatter:off
 		this.mvc.perform(get("/"))
-				.andExpect(status().isUnauthorized());
+	.andExpect(status().isUnauthorized());
 		// @formatter:on
 	}
 
@@ -62,8 +62,8 @@ public class HelloControllerTests {
 	void tokenWhenBadCredentialsThen401() throws Exception {
 		// @formatter:off
 		this.mvc.perform(get("/")
-				.with(httpBasic("user", "passwerd")))
-				.andExpect(status().isUnauthorized());
+	.with(httpBasic("user", "passwerd")))
+	.andExpect(status().isUnauthorized());
 		// @formatter:on
 	}
 

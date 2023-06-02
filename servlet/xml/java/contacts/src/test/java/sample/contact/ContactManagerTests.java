@@ -40,8 +40,7 @@ import static org.assertj.core.api.Assertions.fail;
  * @author Ben Alex
  * @author Luke Taylor
  */
-@ContextConfiguration(locations = { "/applicationContext-security.xml", "/applicationContext-common-authorization.xml",
-		"/applicationContext-common-business.xml" })
+@ContextConfiguration(locations = {"/applicationContext-security.xml", "/applicationContext-common-authorization.xml","/applicationContext-common-business.xml"})
 @SpringJUnitWebConfig
 public class ContactManagerTests {
 

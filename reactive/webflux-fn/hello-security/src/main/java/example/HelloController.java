@@ -38,12 +38,10 @@ public class HelloController {
 	// @formatter:off
 	public Mono<ServerResponse> hello(ServerRequest serverRequest) {
 		return serverRequest.principal()
-			.map(Principal::getName)
-			.flatMap((username) ->
-				ServerResponse.ok()
-					.contentType(MediaType.APPLICATION_JSON)
-					.bodyValue(Collections.singletonMap("message", "Hello " + username + "!"))
-			);
+	.map(Principal::getName)
+	.flatMap((username) ->
+ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).bodyValue(Collections.singletonMap("message", "Hello " + username + "!"))
+	);
 	}
 	// @formatter:on
 

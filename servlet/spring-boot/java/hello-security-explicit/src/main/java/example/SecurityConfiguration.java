@@ -40,11 +40,10 @@ public class SecurityConfiguration {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		// @formatter:off
 		http
-				.authorizeHttpRequests((authorize) -> authorize
-						.anyRequest().authenticated()
-				)
-				.httpBasic(withDefaults())
-				.formLogin(withDefaults());
+	.authorizeHttpRequests((authorize) -> authorize.anyRequest().authenticated()
+	)
+	.httpBasic(withDefaults())
+	.formLogin(withDefaults());
 		// @formatter:on
 		return http.build();
 	}
@@ -53,10 +52,10 @@ public class SecurityConfiguration {
 	@Bean
 	public InMemoryUserDetailsManager userDetailsService() {
 		UserDetails user = User.withDefaultPasswordEncoder()
-				.username("user")
-				.password("password")
-				.roles("USER")
-				.build();
+	.username("user")
+	.password("password")
+	.roles("USER")
+	.build();
 		return new InMemoryUserDetailsManager(user);
 	}
 	// @formatter:on

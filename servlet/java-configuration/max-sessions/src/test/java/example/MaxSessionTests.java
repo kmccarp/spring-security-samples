@@ -41,19 +41,19 @@ public class MaxSessionTests {
 	void run(WebApplicationContext context) throws Exception {
 		// @formatter:off
 		MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(context)
-				.apply(springSecurity())
-				.build();
+	.apply(springSecurity())
+	.build();
 
 		MvcResult mvcResult = mockMvc.perform(formLogin())
-				.andExpect(authenticated())
-				.andReturn();
+	.andExpect(authenticated())
+	.andReturn();
 		// @formatter:on
 
 		MockHttpSession user1Session = (MockHttpSession) mvcResult.getRequest().getSession();
 
 		// @formatter:off
 		mockMvc.perform(get("/").session(user1Session))
-				.andExpect(authenticated());
+	.andExpect(authenticated());
 		// @formatter:on
 
 		mockMvc.perform(formLogin()).andExpect(authenticated());
@@ -61,7 +61,7 @@ public class MaxSessionTests {
 		// @formatter:off
 		// session is terminated by user2
 		mockMvc.perform(get("/").session(user1Session))
-				.andExpect(unauthenticated());
+	.andExpect(unauthenticated());
 		// @formatter:on
 	}
 

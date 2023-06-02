@@ -59,13 +59,13 @@ public class DocumentDaoImpl extends JdbcDaoSupport implements DocumentDao {
 		if (element instanceof Directory) {
 			Directory directory = (Directory) element;
 			Long parentId = (directory.getParent() == null) ? null : directory.getParent().getId();
-			getJdbcTemplate().update(INSERT_INTO_DIRECTORY, new Object[] { directory.getName(), parentId });
+			getJdbcTemplate().update(INSERT_INTO_DIRECTORY, new Object[]{directory.getName(), parentId});
 			FieldUtils.setProtectedFieldValue("id", directory, obtainPrimaryKey());
 		}
 		else if (element instanceof File) {
 			File file = (File) element;
 			Long parentId = (file.getParent() == null) ? null : file.getParent().getId();
-			getJdbcTemplate().update(INSERT_INTO_FILE, new Object[] { file.getName(), file.getContent(), parentId });
+			getJdbcTemplate().update(INSERT_INTO_FILE, new Object[]{file.getName(), file.getContent(), parentId});
 			FieldUtils.setProtectedFieldValue("id", file, obtainPrimaryKey());
 		}
 		else {
@@ -76,11 +76,11 @@ public class DocumentDaoImpl extends JdbcDaoSupport implements DocumentDao {
 	public void delete(File file) {
 		Assert.notNull(file, "File required");
 		Assert.notNull(file.getId(), "File ID required");
-		getJdbcTemplate().update(DELETE_FROM_FILE, new Object[] { file.getId() });
+		getJdbcTemplate().update(DELETE_FROM_FILE, new Object[]{file.getId()});
 	}
 
 	private Directory getDirectoryWithImmediateParentPopulated(final Long id) {
-		return getJdbcTemplate().queryForObject(SELECT_FROM_DIRECTORY_SINGLE, new Object[] { id }, (rs, rowNumber) -> {
+		return getJdbcTemplate().queryForObject(SELECT_FROM_DIRECTORY_SINGLE, new Object[]{id}, (rs, rowNumber) -> {
 			Long parentDirectoryId = rs.getLong("parent_directory_id");
 			Directory parentDirectory = Directory.ROOT_DIRECTORY;
 			if (parentDirectoryId != null && !parentDirectoryId.equals(-1L)) {
@@ -97,32 +97,32 @@ public class DocumentDaoImpl extends JdbcDaoSupport implements DocumentDao {
 		Assert.notNull(directory, "Directory required (the ID can be null to refer to root)");
 		if (directory.getId() == null) {
 			List<Directory> directories = getJdbcTemplate().query(SELECT_FROM_DIRECTORY_NULL,
-					(rs, rowNumber) -> getDirectoryWithImmediateParentPopulated(rs.getLong("id")));
-			return directories.toArray(new AbstractElement[] {});
+		(rs, rowNumber) -> getDirectoryWithImmediateParentPopulated(rs.getLong("id")));
+			return directories.toArray(new AbstractElement[]{});
 		}
 		List<AbstractElement> directories = getJdbcTemplate().query(SELECT_FROM_DIRECTORY,
-				new Object[] { directory.getId() },
-				(rs, rowNumber) -> getDirectoryWithImmediateParentPopulated(rs.getLong("id")));
-		List<File> files = getJdbcTemplate().query(SELECT_FROM_FILE, new Object[] { directory.getId() },
-				(rs, rowNumber) -> {
-					Long parentDirectoryId = rs.getLong("parent_directory_id");
-					Directory parentDirectory = null;
-					if (parentDirectoryId != null) {
-						parentDirectory = getDirectoryWithImmediateParentPopulated(parentDirectoryId);
-					}
-					File file = new File(rs.getString("file_name"), parentDirectory);
-					FieldUtils.setProtectedFieldValue("id", file, rs.getLong("id"));
-					return file;
-				});
+	new Object[]{directory.getId()},
+	(rs, rowNumber) -> getDirectoryWithImmediateParentPopulated(rs.getLong("id")));
+		List<File> files = getJdbcTemplate().query(SELECT_FROM_FILE, new Object[]{directory.getId()},
+	(rs, rowNumber) -> {
+		Long parentDirectoryId = rs.getLong("parent_directory_id");
+		Directory parentDirectory = null;
+		if (parentDirectoryId != null) {
+			parentDirectory = getDirectoryWithImmediateParentPopulated(parentDirectoryId);
+		}
+		File file = new File(rs.getString("file_name"), parentDirectory);
+		FieldUtils.setProtectedFieldValue("id", file, rs.getLong("id"));
+		return file;
+	});
 		// Add the File elements after the Directory elements
 		directories.addAll(files);
-		return directories.toArray(new AbstractElement[] {});
+		return directories.toArray(new AbstractElement[]{});
 	}
 
 	public void update(File file) {
 		Assert.notNull(file, "File required");
 		Assert.notNull(file.getId(), "File ID required");
-		getJdbcTemplate().update(UPDATE_FILE, new Object[] { file.getContent(), file.getId() });
+		getJdbcTemplate().update(UPDATE_FILE, new Object[]{file.getContent(), file.getId()});
 	}
 
 }

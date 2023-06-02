@@ -37,10 +37,10 @@ public class HelloTests {
 	void indexThenOk() throws Exception {
 		// @formatter:off
 		this.rest.get()
-			.uri("/")
-			.exchange()
-			.expectStatus().isOk()
-			.expectBody().json("{\"message\":\"Hello world!\"}");
+	.uri("/")
+	.exchange()
+	.expectStatus().isOk()
+	.expectBody().json("{\"message\":\"Hello world!\"}");
 		// @formatter:on
 	}
 

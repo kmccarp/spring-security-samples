@@ -35,10 +35,9 @@ public class SecurityConfiguration {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		// @formatter:off
 		http
-				.authorizeHttpRequests((authorize) -> authorize
-						.anyRequest().authenticated()
-				)
-				.x509(withDefaults());
+	.authorizeHttpRequests((authorize) -> authorize.anyRequest().authenticated()
+	)
+	.x509(withDefaults());
 		// @formatter:on
 		return http.build();
 	}
@@ -47,25 +46,25 @@ public class SecurityConfiguration {
 	@Bean
 	public UserDetailsService userDetailsService() {
 		UserDetails user = User.withDefaultPasswordEncoder()
-				.username("client")
-				.password("password")
-				.roles("USER")
-				.build();
+	.username("client")
+	.password("password")
+	.roles("USER")
+	.build();
 		UserDetails dianne = User.withDefaultPasswordEncoder()
-				.username("dianne")
-				.password("password")
-				.roles("USER")
-				.build();
+	.username("dianne")
+	.password("password")
+	.roles("USER")
+	.build();
 		UserDetails rod = User.withDefaultPasswordEncoder()
-				.username("rod")
-				.password("password")
-				.roles("USER", "ADMIN")
-				.build();
+	.username("rod")
+	.password("password")
+	.roles("USER", "ADMIN")
+	.build();
 		UserDetails scott = User.withDefaultPasswordEncoder()
-				.username("scott")
-				.password("password")
-				.roles("USER")
-				.build();
+	.username("scott")
+	.password("password")
+	.roles("USER")
+	.build();
 		return new InMemoryUserDetailsManager(user, dianne, rod, scott);
 	}
 	// @formatter:on

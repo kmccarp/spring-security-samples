@@ -53,16 +53,16 @@ public class MaxSessionsITests {
 	void authenticateTwiceTerminatesFirstSession() {
 		// @formatter:off
 		HomePage user1HomePage = HomePage.to(this.user1, this.port)
-				.loginForm()
-					.username("user")
-					.password("password")
-					.submit();
+	.loginForm()
+	.username("user")
+	.password("password")
+	.submit();
 
 		HomePage user2HomePage = HomePage.to(this.user2, this.port)
-				.loginForm()
-				.username("user")
-				.password("password")
-				.submit();
+	.loginForm()
+	.username("user")
+	.password("password")
+	.submit();
 		// @formatter:on
 
 		user2HomePage.assertAt();

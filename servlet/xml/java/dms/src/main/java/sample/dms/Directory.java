@@ -36,7 +36,7 @@ public class Directory extends AbstractElement {
 	@Override
 	public String toString() {
 		return "Directory[fullName='" + getFullName() + "'; name='" + getName() + "'; id='" + getId() + "'; parent='"
-				+ getParent() + "']";
+	+ getParent() + "']";
 	}
 
 }

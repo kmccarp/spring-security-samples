@@ -33,11 +33,9 @@ public class SecurityConfiguration {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		// @formatter:off
 		http
-				.authorizeHttpRequests((authorize) -> authorize
-						.requestMatchers("/login", "/resources/**").permitAll()
-						.anyRequest().authenticated()
-				)
-				.jee((jee) -> jee.mappableRoles("USER", "ADMIN"));
+	.authorizeHttpRequests((authorize) -> authorize.requestMatchers("/login", "/resources/**").permitAll().anyRequest().authenticated()
+	)
+	.jee((jee) -> jee.mappableRoles("USER", "ADMIN"));
 		// @formatter:on
 		return http.build();
 	}
@@ -46,10 +44,10 @@ public class SecurityConfiguration {
 	@Bean
 	public UserDetailsService userDetailsService() {
 		UserDetails user = User.withDefaultPasswordEncoder()
-				.username("user")
-				.password("password")
-				.roles("USER")
-				.build();
+	.username("user")
+	.password("password")
+	.roles("USER")
+	.build();
 		return new InMemoryUserDetailsManager(user);
 	}
 	// @formatter:on

@@ -44,7 +44,7 @@ public class File extends AbstractElement {
 	@Override
 	public String toString() {
 		return "File[fullName='" + getFullName() + "'; name='" + getName() + "'; id='" + getId() + "'; content="
-				+ getContent() + "'; parent='" + getParent() + "']";
+	+ getContent() + "'; parent='" + getParent() + "']";
 	}
 
 }
