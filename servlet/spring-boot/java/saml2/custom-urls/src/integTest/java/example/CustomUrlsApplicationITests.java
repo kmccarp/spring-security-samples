@@ -97,7 +97,7 @@ public class CustomUrlsApplicationITests {
 	private HtmlForm findForm(HtmlPage login) {
 		for (HtmlForm form : login.getForms()) {
 			try {
-				if (form.getId().equals("form19")) {
+				if ("form19".equals(form.getId())) {
 					return form;
 				}
 			}

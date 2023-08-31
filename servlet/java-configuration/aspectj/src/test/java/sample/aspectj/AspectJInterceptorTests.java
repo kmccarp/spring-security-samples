@@ -51,7 +51,7 @@ class AspectJInterceptorTests {
 	@Test
 	void securedMethodNotAuthenticated() {
 		assertThatExceptionOfType(AuthenticationCredentialsNotFoundException.class)
-				.isThrownBy(() -> this.service.secureMethod());
+				.isThrownBy(this.service::secureMethod);
 	}
 
 	@Test
@@ -63,25 +63,25 @@ class AspectJInterceptorTests {
 	@Test
 	@WithMockUser(roles = "ADMIN")
 	void securedMethodWrongRole() {
-		assertThatExceptionOfType(AccessDeniedException.class).isThrownBy(() -> this.service.secureMethod());
+		assertThatExceptionOfType(AccessDeniedException.class).isThrownBy(this.service::secureMethod);
 	}
 
 	@Test
 	void securedClassNotAuthenticated() {
 		assertThatExceptionOfType(AuthenticationCredentialsNotFoundException.class)
-				.isThrownBy(() -> this.securedService.secureMethod());
+				.isThrownBy(this.securedService::secureMethod);
 	}
 
 	@Test
 	@WithMockUser(roles = "ADMIN")
 	void securedClassWrongRole() {
-		assertThatExceptionOfType(AccessDeniedException.class).isThrownBy(() -> this.securedService.secureMethod());
+		assertThatExceptionOfType(AccessDeniedException.class).isThrownBy(this.securedService::secureMethod);
 	}
 
 	@Test
 	@WithMockUser(roles = "ADMIN")
 	void securedClassWrongRoleOnNewedInstance() {
-		assertThatExceptionOfType(AccessDeniedException.class).isThrownBy(() -> new SecuredService().secureMethod());
+		assertThatExceptionOfType(AccessDeniedException.class).isThrownBy(new SecuredService()::secureMethod);
 	}
 
 	@Test

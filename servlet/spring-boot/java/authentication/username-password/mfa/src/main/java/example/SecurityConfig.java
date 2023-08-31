@@ -46,16 +46,16 @@ public class SecurityConfig {
 		MfaAuthenticationHandler mfaAuthenticationHandler = new MfaAuthenticationHandler("/second-factor");
 		// @formatter:off
 		http
-			.authorizeHttpRequests((authorize) -> authorize
+			.authorizeHttpRequests(authorize -> authorize
 				.requestMatchers("/favicon.ico").permitAll()
 				.requestMatchers("/second-factor", "/third-factor").access(mfaAuthorizationManager)
 				.anyRequest().authenticated()
 			)
-			.formLogin((form) -> form
+			.formLogin(form -> form
 				.successHandler(mfaAuthenticationHandler)
 				.failureHandler(mfaAuthenticationHandler)
 			)
-			.exceptionHandling((exceptions) -> exceptions
+			.exceptionHandling(exceptions -> exceptions
 				.withObjectPostProcessor(new ObjectPostProcessor<ExceptionTranslationFilter>() {
 					@Override
 					public <O extends ExceptionTranslationFilter> O postProcess(O filter) {
@@ -64,7 +64,7 @@ public class SecurityConfig {
 					}
 				})
 			)
-			.securityContext((context) -> context.requireExplicitSave(false));
+			.securityContext(context -> context.requireExplicitSave(false));
 		// @formatter:on
 		return http.build();
 	}

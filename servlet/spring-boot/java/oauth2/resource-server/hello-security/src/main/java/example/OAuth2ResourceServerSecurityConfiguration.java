@@ -42,7 +42,7 @@ public class OAuth2ResourceServerSecurityConfiguration {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		// @formatter:off
 		http
-				.authorizeHttpRequests((authorize) -> authorize
+				.authorizeHttpRequests(authorize -> authorize
 						.requestMatchers(HttpMethod.GET, "/message/**").hasAuthority("SCOPE_message:read")
 						.requestMatchers(HttpMethod.POST, "/message/**").hasAuthority("SCOPE_message:write")
 						.anyRequest().authenticated()
